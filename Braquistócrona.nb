@@ -1,0 +1,413 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     15007,        405]
+NotebookOptionsPosition[     12439,        352]
+NotebookOutlinePosition[     12888,        369]
+CellTagsIndexPosition[     12845,        366]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Ajuste de la Soluci\[OAcute]n Braquist\[OAcute]crona", "Title",
+ CellChangeTimes->{{3.9357071009092083`*^9, 
+  3.935707115005666*^9}},ExpressionUUID->"84a775c4-147f-451a-a396-\
+ac7e36183f50"],
+
+Cell[CellGroupData[{
+
+Cell["Introducci\[OAcute]n", "Section",
+ CellChangeTimes->{{3.935707195076851*^9, 3.935707199157627*^9}, {
+  3.935707679173258*^9, 
+  3.935707681349202*^9}},ExpressionUUID->"4fb19ff3-8fdf-42d7-8cc5-\
+dca9a2577cc9"],
+
+Cell["\<\
+Para resolver el problema de la braquist\[OAcute]crona, es \[UAcute]til \
+considerar la situaci\[OAcute]n de forma simple. Por lo tanto, se puede fijar \
+el punto de partida (x1, y1) en el origen de coordenadas, mientras que el \
+punto de llegada (x2, y2) se encuentra a la derecha del origen y por debajo \
+del eje x. Esto conduce  al siguiente desarrollo que podemos adaptar.\
+\>", "Text",
+ CellChangeTimes->{{3.935707281663886*^9, 3.935707396948985*^9}, {
+   3.93570743794897*^9, 3.9357074386202245`*^9}, 3.935707683641138*^9, 
+   3.935708110597389*^9, {3.935708694818855*^9, 
+   3.9357087126750746`*^9}},ExpressionUUID->"b04981b9-13d6-4816-9885-\
+31023a639386"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Paso 1: Definir las Ecuaciones", "Section",
+ CellChangeTimes->{
+  3.935708154838461*^9},ExpressionUUID->"3e51a146-8cd1-4d0c-a95c-\
+bca23af74d9f"],
+
+Cell["\<\
+Las ecuaciones que describen el movimiento de la part\[IAcute]cula se definen \
+de la siguiente manera:\
+\>", "Text",
+ CellChangeTimes->{
+  3.935708193061409*^9},ExpressionUUID->"69ddff6d-02ef-47c3-baec-\
+36d1ea4ff024"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"eq1", "=", 
+   RowBox[{"x2", "==", 
+    RowBox[{"b", "*", 
+     RowBox[{"(", 
+      RowBox[{"theta", "-", 
+       RowBox[{"Sin", "[", "theta", "]"}]}], ")"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"eq2", "=", 
+   RowBox[{"y2", "==", 
+    RowBox[{
+     RowBox[{"-", "b"}], "*", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       RowBox[{"Cos", "[", "theta", "]"}]}], ")"}]}]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.935705376880536*^9, 3.935705376881545*^9}, {
+  3.9357071290944443`*^9, 3.93570714847725*^9}},
+ CellLabel->"In[10]:=",ExpressionUUID->"9c890d32-33fa-449b-9ce7-cd0b2337725c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Paso 2: Definir el Punto de Llegada", "Section",
+ CellChangeTimes->{
+  3.935708226854154*^9},ExpressionUUID->"367b08e6-3824-4e1a-a7af-\
+4f228960578a"],
+
+Cell["\<\
+Aqu\[IAcute], establecemos el punto de llegada de la part\[IAcute]cula. En \
+este caso, lo ubicamos en (x2, y2) = (1, -2). Puedes modificar estos valores \
+para probar otras configuraciones similares.\
+\>", "Text",
+ CellChangeTimes->{{3.935707520420149*^9, 3.935707523589143*^9}, 
+   3.9357082363556843`*^9},ExpressionUUID->"53dbda90-797f-493c-88d2-\
+b92ce22bbc3b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"x2val", "=", "1"}], ";", 
+  RowBox[{"y2val", "=", 
+   RowBox[{"-", "2"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.935705391107865*^9, 3.9357053911088824`*^9}, {
+  3.9357060758237886`*^9, 3.9357060776390057`*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"b211c71e-61fd-4eac-bd9c-daabd3b56558"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Paso 3: Calcular Num\[EAcute]ricamente los Valores Buscados", "Section",
+ CellChangeTimes->{
+  3.9357083225345173`*^9},ExpressionUUID->"dd1b94b3-6241-4561-b90b-\
+cb5ff7768d14"],
+
+Cell["\<\
+Usamos la funci\[OAcute]n FindRoot para calcular num\[EAcute]ricamente la \
+soluci\[OAcute]n del problema.\
+\>", "Text",
+ CellChangeTimes->{
+  3.935708398541254*^9},ExpressionUUID->"8d3d7eb4-510c-4f07-9f64-\
+6083b2152bb3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"sol", "=", 
+   RowBox[{"FindRoot", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"eq1", ",", "eq2"}], "}"}], "/.", " ", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"x2", "->", "x2val"}], ",", 
+        RowBox[{"y2", "->", "y2val"}]}], "}"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"b", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"theta", ",", "1"}], "}"}]}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.9357053986467657`*^9, 3.935705398647775*^9}, 
+   3.9357084207165103`*^9},
+ CellLabel->"In[12]:=",ExpressionUUID->"0d1335e6-b4a4-4931-ada2-d26115deffb4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Paso 4: Verificaci\[OAcute]n de los Resultados", "Section",
+ CellChangeTimes->{
+  3.935708541085202*^9},ExpressionUUID->"6becb163-78b8-41b0-bb89-\
+368ec03fb7b9"],
+
+Cell["\<\
+ Para que estas respuestas tengan sentido f\[IAcute]sico, necesitamos \
+verificar que x2 \[Element] (0, 2b\[Pi]) y y2 \[Element] (-2b, 0).  Si todo \
+es correcto, se mostrar\[AAcute] \[OpenCurlyDoubleQuote]Los valores son V\
+\[AAcute]lidos\[CloseCurlyDoubleQuote].\
+\>", "Text",
+ CellChangeTimes->{{3.9357085609034247`*^9, 
+  3.9357085902630415`*^9}},ExpressionUUID->"28596ec1-8c45-43fe-9984-\
+7993237e1e23"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"bval", "=", 
+   RowBox[{"sol", "[", 
+    RowBox[{"[", 
+     RowBox[{"1", ",", "2"}], "]"}], "]"}]}], ";", 
+  RowBox[{"thetaval", "=", 
+   RowBox[{"sol", "[", 
+    RowBox[{"[", 
+     RowBox[{"2", ",", "2"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"If", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"0", "<", "x2val", "<", 
+     RowBox[{"2", "*", "Pi", "*", "bval"}]}], "&&", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "2"}], "*", "bval"}], "<", "y2val", "<", "0"}]}], ",", 
+   "\"\<Los valores son V\[AAcute]lidos\>\"", ",", 
+   "\"\<Los valores NO son v\[AAcute]lidos\>\""}], "]"}]}], "Input",
+ CellChangeTimes->{{3.9357054095804625`*^9, 3.9357054095815086`*^9}, {
+  3.9357084575876937`*^9, 3.935708488893304*^9}},
+ CellLabel->"In[18]:=",ExpressionUUID->"37bd06d6-a16f-44c6-a043-02d79859e4e3"],
+
+Cell[BoxData["\<\"Los valores son V\[AAcute]lidos\"\>"], "Output",
+ CellChangeTimes->{3.9357084902494717`*^9},
+ CellLabel->"Out[19]=",ExpressionUUID->"0255dfaf-cc35-4365-aec9-d3700dbe6d10"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Paso 5: Visualizaci\[OAcute]n de la Curva", "Section",
+ CellChangeTimes->{
+  3.935708614077118*^9},ExpressionUUID->"e6cc57d9-fae7-45dc-9392-\
+cf23de60b7f6"],
+
+Cell["\<\
+Finalmente, representamos gr\[AAcute]ficamente la curva \
+braquist\[OAcute]crona ajustada. \
+\>", "Text",
+ CellChangeTimes->{{3.935708630148755*^9, 
+  3.9357086502218122`*^9}},ExpressionUUID->"daf6f751-2116-438c-81db-\
+cbca5aec662b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Manipulate", "[", 
+   RowBox[{
+    RowBox[{"Graphics", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"Blue", ",", 
+        RowBox[{"Line", "@", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"bval", "*", 
+              RowBox[{"(", 
+               RowBox[{"t", "-", 
+                RowBox[{"Sin", "[", "t", "]"}]}], ")"}]}], ",", 
+             RowBox[{
+              RowBox[{"-", "bval"}], "*", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", 
+                RowBox[{"Cos", "[", "t", "]"}]}], ")"}]}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"t", ",", "0", ",", "thetaval", ",", 
+             RowBox[{"thetaval", "/", "100"}]}], "}"}]}], "]"}]}], ",", "Red",
+         ",", 
+        RowBox[{"PointSize", "[", "Large", "]"}], ",", 
+        RowBox[{"Point", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"bval", "*", 
+            RowBox[{"(", 
+             RowBox[{"theta", "-", 
+              RowBox[{"Sin", "[", "theta", "]"}]}], ")"}]}], ",", 
+           RowBox[{
+            RowBox[{"-", "bval"}], "*", 
+            RowBox[{"(", 
+             RowBox[{"1", "-", 
+              RowBox[{"Cos", "[", "theta", "]"}]}], ")"}]}]}], "}"}], "]"}]}],
+        "}"}], ",", 
+      RowBox[{"PlotRange", "->", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "x2val"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"-", "2"}], " ", "bval"}], ",", "1"}], "}"}]}], "}"}]}], 
+      ",", 
+      RowBox[{"AspectRatio", "->", "Automatic"}], ",", 
+      RowBox[{"Axes", "->", "True"}], ",", 
+      RowBox[{"AxesStyle", "->", 
+       RowBox[{"Directive", "[", 
+        RowBox[{"Black", ",", "Thick"}], "]"}]}], ",", 
+      RowBox[{"AxesLabel", "->", 
+       RowBox[{"{", 
+        RowBox[{"\"\<x\>\"", ",", "\"\<y\>\""}], "}"}]}], ",", 
+      RowBox[{"Ticks", "->", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Range", "[", 
+          RowBox[{"0", ",", "x2val", ",", "1"}], "]"}], ",", 
+         RowBox[{"Range", "[", 
+          RowBox[{"0", ",", "y2val", ",", 
+           RowBox[{"-", "1"}]}], "]"}]}], "}"}]}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"theta", ",", "0", ",", "thetaval", ",", 
+      RowBox[{"thetaval", "/", "100"}]}], "}"}]}], "]"}], "\n"}]], "Input",
+ CellChangeTimes->{{3.935705429917737*^9, 3.9357054299187393`*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"62ceaf03-8740-4b3e-9a7d-8450d5b4e4b9"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`theta$$ = 0, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"sin t\[IAcute]tulo\"", Typeset`specs$$ = {{
+      Hold[$CellContext`theta$$], 0, 1.4013794559024735`, 
+      0.014013794559024736`}}, Typeset`size$$ = {
+    98.61345857376557, {214., 218.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = True}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`theta$$ = 0}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Graphics[{Blue, 
+         Line[
+          
+          Table[{$CellContext`bval ($CellContext`t - 
+             Sin[$CellContext`t]), (-$CellContext`bval) (1 - 
+             Cos[$CellContext`t])}, {$CellContext`t, 
+            0, $CellContext`thetaval, $CellContext`thetaval/100}]], Red, 
+         PointSize[Large], 
+         Point[{$CellContext`bval ($CellContext`theta$$ - 
+            Sin[$CellContext`theta$$]), (-$CellContext`bval) (1 - 
+            Cos[$CellContext`theta$$])}]}, 
+        PlotRange -> {{0, $CellContext`x2val}, {(-2) $CellContext`bval, 1}}, 
+        AspectRatio -> Automatic, Axes -> True, AxesStyle -> 
+        Directive[Black, Thick], AxesLabel -> {"x", "y"}, Ticks -> {
+          Range[0, $CellContext`x2val, 1], 
+          Range[0, $CellContext`y2val, -1]}], 
+      "Specifications" :> {{$CellContext`theta$$, 0, 1.4013794559024735`, 
+         0.014013794559024736`}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{263., {258.13403309800196`, 263.86596690199804`}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.9357054316108475`*^9, 3.9357054528111534`*^9}, 
+   3.9357060901481647`*^9, 3.9357068439858923`*^9},
+ CellLabel->"Out[7]=",ExpressionUUID->"2fba38c3-0b55-4f22-a203-d2e0b9f5c4e2"]
+}, Open  ]],
+
+Cell["\<\
+Este c\[OAcute]digo visualiza la curva braquist\[OAcute]crona resultante, \
+mostrando el trayecto que minimiza el tiempo de viaje bajo las condiciones \
+dadas.\
+\>", "Text",
+ CellChangeTimes->{
+  3.9357086592363653`*^9},ExpressionUUID->"a3df7e53-2653-4887-a2f3-\
+269e488cedde"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{718.5, 735.},
+WindowMargins->{{Automatic, -5.25}, {Automatic, 0}},
+TaggingRules-><|"TryRealOnly" -> False|>,
+FrontEndVersion->"13.0 para Microsoft Windows (64-bit) (February 4, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"86580e4b-cf70-4fc5-8707-f89b4c9be46f"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 197, 3, 160, "Title",ExpressionUUID->"84a775c4-147f-451a-a396-ac7e36183f50"],
+Cell[CellGroupData[{
+Cell[802, 29, 214, 4, 67, "Section",ExpressionUUID->"4fb19ff3-8fdf-42d7-8cc5-dca9a2577cc9"],
+Cell[1019, 35, 675, 11, 104, "Text",ExpressionUUID->"b04981b9-13d6-4816-9885-31023a639386"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1731, 51, 151, 3, 67, "Section",ExpressionUUID->"3e51a146-8cd1-4d0c-a95c-bca23af74d9f"],
+Cell[1885, 56, 229, 6, 35, "Text",ExpressionUUID->"69ddff6d-02ef-47c3-baec-36d1ea4ff024"],
+Cell[2117, 64, 650, 19, 78, "Input",ExpressionUUID->"9c890d32-33fa-449b-9ce7-cd0b2337725c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2804, 88, 156, 3, 67, "Section",ExpressionUUID->"367b08e6-3824-4e1a-a7af-4f228960578a"],
+Cell[2963, 93, 375, 7, 58, "Text",ExpressionUUID->"53dbda90-797f-493c-88d2-b92ce22bbc3b"],
+Cell[3341, 102, 326, 7, 28, "Input",ExpressionUUID->"b211c71e-61fd-4eac-bd9c-daabd3b56558"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3704, 114, 182, 3, 67, "Section",ExpressionUUID->"dd1b94b3-6241-4561-b90b-cb5ff7768d14"],
+Cell[3889, 119, 232, 6, 35, "Text",ExpressionUUID->"8d3d7eb4-510c-4f07-9f64-6083b2152bb3"],
+Cell[4124, 127, 695, 21, 43, "Input",ExpressionUUID->"0d1335e6-b4a4-4931-ada2-d26115deffb4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4856, 153, 167, 3, 67, "Section",ExpressionUUID->"6becb163-78b8-41b0-bb89-368ec03fb7b9"],
+Cell[5026, 158, 418, 8, 58, "Text",ExpressionUUID->"28596ec1-8c45-43fe-9984-7993237e1e23"],
+Cell[CellGroupData[{
+Cell[5469, 170, 846, 22, 83, "Input",ExpressionUUID->"37bd06d6-a16f-44c6-a043-02d79859e4e3"],
+Cell[6318, 194, 189, 2, 32, "Output",ExpressionUUID->"0255dfaf-cc35-4365-aec9-d3700dbe6d10"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6556, 202, 162, 3, 67, "Section",ExpressionUUID->"e6cc57d9-fae7-45dc-9392-cf23de60b7f6"],
+Cell[6721, 207, 243, 6, 35, "Text",ExpressionUUID->"daf6f751-2116-438c-81db-cbca5aec662b"],
+Cell[CellGroupData[{
+Cell[6989, 217, 2575, 70, 330, "Input",ExpressionUUID->"62ceaf03-8740-4b3e-9a7d-8450d5b4e4b9"],
+Cell[9567, 289, 2542, 49, 541, "Output",ExpressionUUID->"2fba38c3-0b55-4f22-a203-d2e0b9f5c4e2"]
+}, Open  ]],
+Cell[12124, 341, 287, 7, 58, "Text",ExpressionUUID->"a3df7e53-2653-4887-a2f3-269e488cedde"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
